@@ -1,6 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const HalspaceFigmaSection = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    whatDoYouDo: '',
+    whatToSee: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbx6AuxPEi2ZYKM_nnUF5ibubpdnaArb1SFwMkgXMu8tSwWFRQNdBB0gqdzL9os92wQk/exec';
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Quick frontend check: Has this specific browser already submitted?
+    if (localStorage.getItem(`joined_${formData.email}`)) {
+      setSubmitStatus('duplicate');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const dataToSubmit = {
+      fullName: formData.fullName,
+      email: formData.email,
+      whatDoYouDo: formData.whatDoYouDo,
+      whatToSee: formData.whatToSee
+    };
+
+    try {
+      await fetch(scriptURL, { 
+        method: 'POST', 
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(dataToSubmit)
+      });
+      
+      // Store success in localStorage to prevent repeat submissions on this device
+      localStorage.setItem(`joined_${formData.email}`, 'true');
+      
+      setSubmitStatus('success');
+      setFormData({
+        fullName: '',
+        email: '',
+        whatDoYouDo: '',
+        whatToSee: ''
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="halspace-design">
       {/* Section 1: Hero / Split Screen */}
@@ -17,34 +80,99 @@ const HalspaceFigmaSection = () => {
         </div>
         <div className="hero-form-side">
           <div className="form-container">
-            <h2>Your space is waiting. So are we.</h2>
-            <p className="subtitle">Halspace opens in Yaba, Lagos in March, 2025. Join the waitlist to get priority access.</p>
-
-            <form className="waitlist-form">
-              <div className="form-group row">
-                <label>Full name</label>
-                <input type="text" placeholder="Johnathan Doe" />
-              </div>
-              <div className="form-group row">
-                <label>Email address</label>
-                <input type="email" placeholder="john.doe@gmail.com" />
-              </div>
-              <div className="form-group row">
-                <label>What do you  do?</label>
-                <div className="select-wrapper">
-                  <select>
-                    <option>Select an option</option>
-                    <option>Private Office</option>
-                    <option>Coworking Space</option>
-                  </select>
+            {submitStatus === 'success' ? (
+              <div className="success-state">
+                <h2 className="success-title">You're on the list. Welcome to Halspace.</h2>
+                <p className="success-subtitle">
+                  We've saved your spot. You'll hear from us first when bookings open — check your inbox for a confirmation. 
+                  In the meantime, follow us on our socials to stay in the loop
+                </p>
+                <div className="share-icons">
+                  <a href="#" className="share-icon-circle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  </a>
+                  <a href="#" className="share-icon-circle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  </a>
+                  <a href="#" className="share-icon-circle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                  </a>
                 </div>
               </div>
-              <div className="form-group row col">
-                <label>What would you like to see in the space?</label>
-                <textarea rows="3" placeholder="Share with us the things you'd love to see in the space"></textarea>
-              </div>
-              <button type="button" className="btn-black btn-full">Join the waitlist</button>
-            </form>
+            ) : (
+              <>
+                <h2>Your space is waiting. So are we.</h2>
+                <p className="subtitle">Halspace opens in Yaba, Lagos in March, 2025. Join the waitlist to get priority access.</p>
+
+                <form className="waitlist-form" onSubmit={handleSubmit}>
+                  <div className="form-group row">
+                    <label>Full name</label>
+                    <input 
+                      type="text" 
+                      name="fullName"
+                      placeholder="Johnathan Doe" 
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group row">
+                    <label>Email address</label>
+                    <input 
+                      type="email" 
+                      name="email"
+                      placeholder="john.doe@gmail.com" 
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group row">
+                    <label>What do you do?</label>
+                    <div className="select-wrapper">
+                      <select 
+                        name="whatDoYouDo"
+                        value={formData.whatDoYouDo}
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="">Select an option</option>
+                        <option value="Private Office">Private Office</option>
+                        <option value="Coworking Space">Coworking Space</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="form-group row col">
+                    <label>What would you like to see in the space?</label>
+                    <textarea 
+                      name="whatToSee"
+                      rows="3" 
+                      placeholder="Share with us the things you'd love to see in the space"
+                      value={formData.whatToSee}
+                      onChange={handleChange}
+                    ></textarea>
+                  </div>
+                  <button 
+                    type="submit" 
+                    className="btn-black btn-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Joining...' : 'Join the waitlist'}
+                  </button>
+                  
+                  {submitStatus === 'duplicate' && (
+                    <p className="text-sm text-blue-600 mt-4 text-center font-medium">
+                      You've already joined the waitlist! We have your info.
+                    </p>
+                  )}
+                  {submitStatus === 'error' && (
+                    <p className="text-sm text-red-600 mt-4 text-center font-medium">
+                      Something went wrong. Please try again.
+                    </p>
+                  )}
+                </form>
+              </>
+            )}
           </div>
         </div>
       </section>
