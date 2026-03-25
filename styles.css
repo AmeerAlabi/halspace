@@ -531,3 +531,131 @@ body {
         margin-top: 0;
     }
 }
+
+/* COUNTDOWN SECTION */
+.countdown-section {
+    background: #fff;
+    color: #1a1a1a;
+    padding: 120px 5%;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+}
+
+.countdown-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.countdown-header h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 4rem;
+    letter-spacing: -0.02em;
+    color: #000;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 4rem;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.countdown-value {
+    font-size: 4.5rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown-separator {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-top: 15px; /* Alignment adjustment */
+    opacity: 0.3;
+}
+
+.countdown-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #888;
+    letter-spacing: 0.15em;
+}
+
+.countdown-footer p {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.btn-black-outline {
+    background: transparent;
+    color: #000;
+    border: 1px solid #000;
+    padding: 16px 32px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn-black-outline:hover {
+    background: #000;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .countdown-section {
+        padding: 60px 16px;
+    }
+
+    .countdown-header h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .countdown-timer {
+        gap: 8px 12px;
+        flex-wrap: wrap;
+        max-width: 400px;
+        margin: 0 auto 3rem;
+    }
+
+    .countdown-item {
+        min-width: 70px;
+        flex: 1 1 auto;
+    }
+
+    .countdown-value {
+        font-size: 2rem;
+    }
+
+    .countdown-separator {
+        display: none; /* Hide colons on mobile for cleaner wrapping */
+    }
+
+    .countdown-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+    }
+
+    .countdown-footer p {
+        font-size: 0.8rem;
+    }
+}

@@ -278,6 +278,9 @@ const HalspaceFigmaSection = () => {
         </div>
       </section>
 
+      {/* Countdown Section */}
+      <CountdownTimer targetDate="2026-06-01T00:00:00" />
+
       {/* Footer */}
       <footer className="site-footer">
         <div className="footer-inner">
@@ -319,6 +322,72 @@ const HalspaceFigmaSection = () => {
         </div>
       </footer>
     </div>
+  );
+};
+
+const CountdownTimer = ({ targetDate }) => {
+  const calculateTimeLeft = () => {
+    const difference = +new Date(targetDate) - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
+    } else {
+      timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
+  const timerComponents = [];
+
+  Object.keys(timeLeft).forEach((interval, index) => {
+    timerComponents.push(
+      <div key={interval} className="countdown-item">
+        <span className="countdown-value">{timeLeft[interval].toString().padStart(2, '0')}</span>
+        <span className="countdown-label">{interval.toUpperCase()}</span>
+      </div>
+    );
+    
+    // Add colon between items (but not after the last one)
+    if (index < Object.keys(timeLeft).length - 1) {
+      timerComponents.push(
+        <div key={`colon-${index}`} className="countdown-separator">:</div>
+      );
+    }
+  });
+
+  return (
+    <section className="countdown-section">
+      <div className="countdown-container">
+        <div className="countdown-header">
+          <span className="eyebrow">Launching Soon</span>
+          <h2>The future of workspace arrives in June 2026.</h2>
+        </div>
+        <div className="countdown-timer">
+          {timerComponents.length ? timerComponents : <span>Launching now!</span>}
+        </div>
+        <div className="countdown-footer">
+          <p>Join the waitlist to be part of the first cohort.</p>
+          <button className="btn-black-outline" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Join the list</button>
+        </div>
+      </div>
+    </section>
   );
 };
 
