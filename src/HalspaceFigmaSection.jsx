@@ -19,7 +19,7 @@ const HalspaceFigmaSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Quick frontend check: Has this specific browser already submitted?
     if (localStorage.getItem(`joined_${formData.email}`)) {
       setSubmitStatus('duplicate');
@@ -37,18 +37,18 @@ const HalspaceFigmaSection = () => {
     };
 
     try {
-      await fetch(scriptURL, { 
-        method: 'POST', 
+      await fetch(scriptURL, {
+        method: 'POST',
         mode: 'no-cors',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
         },
         body: JSON.stringify(dataToSubmit)
       });
-      
+
       // Store success in localStorage to prevent repeat submissions on this device
       localStorage.setItem(`joined_${formData.email}`, 'true');
-      
+
       setSubmitStatus('success');
       setFormData({
         fullName: '',
@@ -84,7 +84,7 @@ const HalspaceFigmaSection = () => {
               <div className="success-state">
                 <h2 className="success-title">You're on the list. Welcome to Halspace.</h2>
                 <p className="success-subtitle">
-                  We've saved your spot. You'll hear from us first when bookings open — check your inbox for a confirmation. 
+                  We've saved your spot. You'll hear from us first when bookings open — check your inbox for a confirmation.
                   In the meantime, follow us on our socials to stay in the loop
                 </p>
                 <div className="share-icons">
@@ -102,15 +102,15 @@ const HalspaceFigmaSection = () => {
             ) : (
               <>
                 <h2>Your space is waiting. So are we.</h2>
-                <p className="subtitle">Halspace opens in Yaba, Lagos in March, 2025. Join the waitlist to get priority access.</p>
+                <p className="subtitle">Halspace opens in Yaba, Lagos in June, 2026. Join the waitlist to get priority access.</p>
 
                 <form className="waitlist-form" onSubmit={handleSubmit}>
                   <div className="form-group row">
                     <label>Full name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="fullName"
-                      placeholder="Johnathan Doe" 
+                      placeholder="Johnathan Doe"
                       value={formData.fullName}
                       onChange={handleChange}
                       required
@@ -118,10 +118,10 @@ const HalspaceFigmaSection = () => {
                   </div>
                   <div className="form-group row">
                     <label>Email address</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       name="email"
-                      placeholder="john.doe@gmail.com" 
+                      placeholder="john.doe@gmail.com"
                       value={formData.email}
                       onChange={handleChange}
                       required
@@ -130,7 +130,7 @@ const HalspaceFigmaSection = () => {
                   <div className="form-group row">
                     <label>What do you do?</label>
                     <div className="select-wrapper">
-                      <select 
+                      <select
                         name="whatDoYouDo"
                         value={formData.whatDoYouDo}
                         onChange={handleChange}
@@ -144,22 +144,22 @@ const HalspaceFigmaSection = () => {
                   </div>
                   <div className="form-group row col">
                     <label>What would you like to see in the space?</label>
-                    <textarea 
+                    <textarea
                       name="whatToSee"
-                      rows="3" 
+                      rows="3"
                       placeholder="Share with us the things you'd love to see in the space"
                       value={formData.whatToSee}
                       onChange={handleChange}
                     ></textarea>
                   </div>
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="btn-black btn-full"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Joining...' : 'Join the waitlist'}
                   </button>
-                  
+
                   {submitStatus === 'duplicate' && (
                     <p className="text-sm text-blue-600 mt-4 text-center font-medium">
                       You've already joined the waitlist! We have your info.
@@ -363,7 +363,7 @@ const CountdownTimer = ({ targetDate }) => {
         <span className="countdown-label">{interval.toUpperCase()}</span>
       </div>
     );
-    
+
     // Add colon between items (but not after the last one)
     if (index < Object.keys(timeLeft).length - 1) {
       timerComponents.push(
