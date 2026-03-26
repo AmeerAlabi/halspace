@@ -129,27 +129,37 @@ const HalspaceFigmaSection = () => {
                   </div>
                   <div className="form-group row">
                     <label>What do you do?</label>
-                    <input
-                      type="text"
+                    <select
                       name="whatDoYouDo"
-                      list="role-options"
-                      placeholder="Search roles (e.g., Student)"
                       value={formData.whatDoYouDo}
                       onChange={handleChange}
                       required
-                    />
-                    <datalist id="role-options">
-                      <option value="Student" />
-                      <option value="Freelancer" />
-                      <option value="Entrepreneur" />
-                      <option value="Startup Founder" />
-                      <option value="Corporate Employee" />
-                      <option value="Consultant" />
-                      <option value="Small Business Owner" />
-                      <option value="Investor" />
-                      <option value="Educator / Teacher" />
-                      <option value="Nonprofit / NGO" />
-                    </datalist>
+                    >
+                      <option value="">Select an option</option>
+                      <option value="Student">Student</option>
+                      <option value="Freelancer">Freelancer</option>
+                      <option value="Entrepreneur">Entrepreneur</option>
+                      <option value="Startup Founder">Startup Founder</option>
+                      <option value="Corporate Employee">Corporate Employee</option>
+                      <option value="Consultant">Consultant</option>
+                      <option value="Small Business Owner">Small Business Owner</option>
+                      <option value="Investor">Investor</option>
+                      <option value="Educator / Teacher">Educator / Teacher</option>
+                      <option value="Nonprofit / NGO">Nonprofit / NGO</option>
+                      <option value="Software Developer">Software Developer</option>
+                      <option value="Designer">Designer</option>
+                      <option value="Project Manager">Project Manager</option>
+                      <option value="Product Manager">Product Manager</option>
+                      <option value="Marketing Specialist">Marketing Specialist</option>
+                      <option value="Sales Representative">Sales Representative</option>
+                      <option value="Accountant / Finance">Accountant / Finance</option>
+                      <option value="Engineer">Engineer</option>
+                      <option value="Healthcare Professional">Healthcare Professional</option>
+                      <option value="Legal Professional">Legal Professional</option>
+                      <option value="Creative Professional">Creative Professional</option>
+                      <option value="Operations Professional">Operations Professional</option>
+                      <option value="Other">Other</option>
+                    </select>
                   </div>
                   <div className="form-group row col">
                     <label>What would you like to see in the space?</label>
