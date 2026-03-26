@@ -27,6 +27,7 @@ body {
     padding: 60px; /* Aligned with form side logic */
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Keep logo top and hero copy lower consistently */
 }
 
 .logo {
@@ -42,7 +43,7 @@ body {
 
 .hero-content {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: clamp(12px, 4vh, 40px);
     max-width: 500px;
 }
 
@@ -469,6 +470,10 @@ body {
 
     .hero-image-side {
         min-height: 500px;
+    }
+
+    .hero-content {
+        margin-bottom: 12px;
     }
 
     .hero-content h1 {

@@ -73,8 +73,8 @@ const HalspaceFigmaSection = () => {
             <img src="/assets/hallogo.png" alt="Halspace Logo" className="header-logo" />
           </header>
           <div className="hero-content">
-            <h1>Made for work, Built for businesses and individuals</h1>
-            <p>From freelancers to Fortune 500s, discover flexible offices that scale with you—anytime and anywhere you work.</p>
+            <h1>Made for builders. Designed for growth.</h1>
+            <p>Halspace is a home for individuals and businesses building meaningful work while staying aligned with their values.</p>
             <button className="btn-outline" onClick={() => document.getElementById('workspaces').scrollIntoView({ behavior: 'smooth' })}>Learn more</button>
           </div>
         </div>
@@ -207,7 +207,7 @@ const HalspaceFigmaSection = () => {
             <img src="/assets/hal1.png" alt="Private office" />
             <div className="card-body">
               <h3>Private office</h3>
-              <p>Unlock turnkey, move-in-ready space designed to scale and flex to the needs of businesses of all sizes.</p>
+              <p>Enjoy the privacy of your own office while staying connected to a vibrant, faith-based community of builders and professionals.</p>
             </div>
           </div>
           <div className="card">
@@ -221,7 +221,7 @@ const HalspaceFigmaSection = () => {
             <img src="/assets/hal3.png" alt="Event Spaces" />
             <div className="card-body">
               <h3>Event Spaces</h3>
-              <p>Book a desk for the day or meeting room by the hour in a convenient location near you.</p>
+              <p>Host your meetings, workshops, and gatherings in a well-equipped space designed for seamless and impactful events.</p>
             </div>
           </div>
         </div>
@@ -269,6 +269,30 @@ const HalspaceFigmaSection = () => {
               <rect x="13" y="12" width="2" height="2" fill="black" />
               <path d="M10 20V16H14V20" stroke="black" strokeWidth="2" />
             </svg>
+            <h3>5,490 sq ft</h3>
+            <p>of curated workspace</p>
+          </div>
+          <div className="stat-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="stat-icon">
+              <rect x="5" y="4" width="14" height="16" stroke="black" strokeWidth="2" rx="1" />
+              <rect x="9" y="8" width="2" height="2" fill="black" />
+              <rect x="13" y="8" width="2" height="2" fill="black" />
+              <rect x="9" y="12" width="2" height="2" fill="black" />
+              <rect x="13" y="12" width="2" height="2" fill="black" />
+              <path d="M10 20V16H14V20" stroke="black" strokeWidth="2" />
+            </svg>
+            <h3>3</h3>
+            <p>floors of premium amenities</p>
+          </div>
+          {/* <div className="stat-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="stat-icon">
+              <rect x="5" y="4" width="14" height="16" stroke="black" strokeWidth="2" rx="1" />
+              <rect x="9" y="8" width="2" height="2" fill="black" />
+              <rect x="13" y="8" width="2" height="2" fill="black" />
+              <rect x="9" y="12" width="2" height="2" fill="black" />
+              <rect x="13" y="12" width="2" height="2" fill="black" />
+              <path d="M10 20V16H14V20" stroke="black" strokeWidth="2" />
+            </svg>
             <h3>5,674 sq ft</h3>
             <p>of curated workspace</p>
           </div>
@@ -283,31 +307,7 @@ const HalspaceFigmaSection = () => {
             </svg>
             <h3>4</h3>
             <p>floors of premium amenities</p>
-          </div>
-          <div className="stat-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="stat-icon">
-              <rect x="5" y="4" width="14" height="16" stroke="black" strokeWidth="2" rx="1" />
-              <rect x="9" y="8" width="2" height="2" fill="black" />
-              <rect x="13" y="8" width="2" height="2" fill="black" />
-              <rect x="9" y="12" width="2" height="2" fill="black" />
-              <rect x="13" y="12" width="2" height="2" fill="black" />
-              <path d="M10 20V16H14V20" stroke="black" strokeWidth="2" />
-            </svg>
-            <h3>5,674 sq ft</h3>
-            <p>of curated workspace</p>
-          </div>
-          <div className="stat-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="stat-icon">
-              <rect x="5" y="4" width="14" height="16" stroke="black" strokeWidth="2" rx="1" />
-              <rect x="9" y="8" width="2" height="2" fill="black" />
-              <rect x="13" y="8" width="2" height="2" fill="black" />
-              <rect x="9" y="12" width="2" height="2" fill="black" />
-              <rect x="13" y="12" width="2" height="2" fill="black" />
-              <path d="M10 20V16H14V20" stroke="black" strokeWidth="2" />
-            </svg>
-            <h3>4</h3>
-            <p>floors of premium amenities</p>
-          </div>
+          </div> */}
         </div>
       </section>
 
