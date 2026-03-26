@@ -24,7 +24,7 @@ body {
     background-size: cover;
     background-position: center;
     color: #fff;
-    padding: 40px 60px;
+    padding: 60px; /* Aligned with form side logic */
     display: flex;
     flex-direction: column;
 }
@@ -41,22 +41,24 @@ body {
 }
 
 .hero-content {
-    margin-top: auto;
-    margin-bottom: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
     max-width: 500px;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 600;
     line-height: 1.1;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
+    color: #fff; /* Override global h1 color for hero-left background */
 }
 
 .hero-content p {
     font-size: 1rem;
     margin-bottom: 2rem;
+    color: #fff;
     opacity: 0.9;
     line-height: 1.6;
 }
@@ -80,16 +82,16 @@ body {
 
 .hero-form-side {
     width: 50%;
-    padding: 80px 10%;
+    padding: 60px; /* Match left column so both start from same line */
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align form content to the top padding */
     background-color: #fff;
 }
 
 .form-container {
     width: 100%;
     max-width: 440px;
-    margin: auto;
+    margin: 0; /* Left-align the form within the padded column */
 }
 
 .form-container h2 {
@@ -123,7 +125,7 @@ body {
 .waitlist-form select,
 .waitlist-form textarea {
     width: 100%;
-    padding: 14px 16px;
+    padding: 16px; /* Unified with buttons */
     background: #fafafa;
     border: 1px solid #f0f0f0;
     font-family: inherit;
@@ -174,9 +176,7 @@ body {
 
 /* SECTION 2: WORKSPACES */
 .workspaces {
-    padding: 100px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 100px 60px 60px;
 }
 
 .eyebrow {
@@ -188,7 +188,7 @@ body {
 }
 
 .workspaces-header h2 {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 3.5rem;
     max-width: 450px;
@@ -241,9 +241,19 @@ body {
 
 /* CAFE */
 .cafe {
-    padding: 0 5%;
-    max-width: 1200px;
-    margin: 0 auto 100px;
+    padding: 20px 60px 0;
+    margin: 0 0 100px;
+}
+
+.cafe-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.cafe-grid .card img {
+    height: 250px; /* Prayer room image needs a taller crop box */
+    object-position: center 70%; /* Keep the main subject visible */
 }
 
 .cafe-image-container img {
@@ -273,9 +283,7 @@ body {
 /* STATS */
 .stats-split {
     display: flex;
-    padding: 80px 5%;
-    max-width: 1200px;
-    margin: 0 auto 100px;
+    padding: 100px 60px; /* Standardized padding */
     gap: 80px;
 }
 
@@ -284,10 +292,10 @@ body {
 }
 
 .stats-text h2 {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: 500;
     line-height: 1.15;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     letter-spacing: -0.02em;
     color: #1A1A1A;
 }
@@ -296,7 +304,14 @@ body {
     font-size: 0.875rem;
     color: #111;
     line-height: 1.6;
-    font-weight: 500;
+    font-weight: 400; /* Regular weight instead of medium */
+}
+
+.stats-divider {
+    height: 1px;
+    width: 100%;
+    background: #e5e4e7;
+    margin: 0 0 1.5rem;
 }
 
 .stats-grid {
@@ -328,14 +343,14 @@ body {
 .site-footer {
     background-color: #030303;
     color: #fff;
-    padding: 80px 5% 0;
+    padding: 100px 60px 0; /* Standardized top padding */
     position: relative;
     overflow: hidden;
 }
 
 .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     position: relative;
     z-index: 2;
 }
@@ -397,7 +412,7 @@ body {
 
 .success-state {
     text-align: left;
-    padding: 20px 0;
+    padding: 20px 0; /* Clearer internal spacing */
 }
 
 .success-title {
@@ -449,16 +464,15 @@ body {
     .stats-text,
     .stats-grid {
         width: 100%;
-        padding: 40px 20px;
+        padding: 60px 24px; /* Unified mobile padding */
     }
 
     .hero-image-side {
-        min-height: 400px;
-        padding-top: 60px;
+        min-height: 500px;
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 2.75rem;
         margin-bottom: 1rem;
     }
 
@@ -476,11 +490,11 @@ body {
     }
 
     .workspaces {
-        padding: 60px 20px;
+        padding: 60px 24px 30px;
     }
 
     .workspaces-header h2 {
-        font-size: 1.75rem;
+        font-size: 2rem;
         margin-bottom: 2rem;
     }
 
@@ -491,8 +505,18 @@ body {
     }
 
     .cafe {
-        padding: 0 20px;
+        padding: 20px 24px 0;
         margin-bottom: 60px;
+    }
+
+    .cafe-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .cafe-grid .card img {
+        height: 210px;
+        object-position: center 70%;
     }
 
     .cafe-image-container img {
@@ -500,22 +524,37 @@ body {
     }
 
     .stats-split {
-        gap: 40px;
-        margin-bottom: 60px;
-        padding: 40px 20px;
+        gap: 24px;
+        margin-bottom: 0;
+        padding: 60px 24px;
+    }
+
+    /* Avoid double padding on mobile: keep spacing controlled by .stats-split */
+    .stats-text,
+    .stats-grid {
+        padding: 0;
     }
 
     .stats-text h2 {
-        font-size: 1.75rem;
+        font-size: 2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .stat-icon {
+        margin-bottom: 0.9rem;
+    }
+
+    .stat-item h3 {
+        font-size: 1.5rem;
     }
 
     .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
     .site-footer {
-        padding: 60px 20px 0;
+        padding: 60px 24px 0;
     }
 
     .footer-columns {
@@ -536,7 +575,7 @@ body {
 .countdown-section {
     background: #fff;
     color: #1a1a1a;
-    padding: 120px 5%;
+    padding: 100px 60px; /* Standardized padding */
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -544,8 +583,8 @@ body {
 }
 
 .countdown-container {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     position: relative;
     z-index: 1;
 }
@@ -622,7 +661,7 @@ body {
 
 @media (max-width: 900px) {
     .countdown-section {
-        padding: 60px 16px;
+        padding: 60px 24px;
     }
 
     .countdown-header h2 {
@@ -632,22 +671,27 @@ body {
 
     .countdown-timer {
         gap: 8px 12px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* keep values + separators on one row */
         max-width: 400px;
         margin: 0 auto 3rem;
     }
 
     .countdown-item {
         min-width: 70px;
-        flex: 1 1 auto;
+        flex: 0 0 auto;
     }
 
     .countdown-value {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .countdown-separator {
-        display: none; /* Hide colons on mobile for cleaner wrapping */
+        display: flex;
+        align-items: center; /* Keep the colon on the same baseline row */
+        align-self: center;
+        margin-top: 0;
+        font-size: 1.8rem; /* Match value size for clean inline look */
+        flex: 0 0 auto;
     }
 
     .countdown-label {

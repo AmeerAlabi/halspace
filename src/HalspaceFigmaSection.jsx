@@ -75,7 +75,7 @@ const HalspaceFigmaSection = () => {
           <div className="hero-content">
             <h1>Made for work, Built for businesses and individuals</h1>
             <p>From freelancers to Fortune 500s, discover flexible offices that scale with you—anytime and anywhere you work.</p>
-            <button className="btn-outline">Learn more</button>
+            <button className="btn-outline" onClick={() => document.getElementById('workspaces').scrollIntoView({ behavior: 'smooth' })}>Learn more</button>
           </div>
         </div>
         <div className="hero-form-side">
@@ -161,12 +161,12 @@ const HalspaceFigmaSection = () => {
                   </button>
 
                   {submitStatus === 'duplicate' && (
-                    <p className="text-sm text-blue-600 mt-4 text-center font-medium">
+                    <p className="text-sm text-blue-600 mt-4 text-left font-medium">
                       You've already joined the waitlist! We have your info.
                     </p>
                   )}
                   {submitStatus === 'error' && (
-                    <p className="text-sm text-red-600 mt-4 text-center font-medium">
+                    <p className="text-sm text-red-600 mt-4 text-left font-medium">
                       Something went wrong. Please try again.
                     </p>
                   )}
@@ -178,7 +178,7 @@ const HalspaceFigmaSection = () => {
       </section>
 
       {/* Section 2: Workspaces */}
-      <section className="workspaces">
+      <section className="workspaces" id="workspaces">
         <div className="workspaces-header">
           <span className="eyebrow">Find Your Space</span>
           <h2>The right workspace for every stage of work.</h2>
@@ -210,12 +210,26 @@ const HalspaceFigmaSection = () => {
 
       {/* Section 3: Salaam Cafe */}
       <section className="cafe">
-        <div className="cafe-image-container">
-          <img src="/assets/salam.png" alt="Salaam Cafe" />
-        </div>
-        <div className="cafe-content">
-          <h3>Salaam Cafe</h3>
-          <p>Salaam Cafe is more than a place to eat. It is where conversations begin, ideas take shape, and people come together in a space built on warmth and intentional connection. Whether you are taking a quiet break or sharing moments with others, every seat is designed to feel welcoming and meaningful.</p>
+        <div className="cafe-grid">
+          <div className="card">
+            <img src="/assets/salam.png" alt="Salaam Cafe" />
+            <div className="card-body">
+              <h3>Salaam Cafe</h3>
+              <p>
+                Salaam Cafe is more than a place to eat. It is where conversations begin, ideas take shape, and people come
+                together in a space built on warmth and intentional connection. Whether you are taking a quiet break or
+                sharing moments with others, every seat is designed to feel welcoming and meaningful.
+              </p>
+            </div>
+          </div>
+
+          <div className="card">
+            <img src="/assets/Frame%2016.png" alt="Prayer Room" />
+            <div className="card-body">
+              <h3>Prayer Room</h3>
+              <p>A The Halspace Prayer Room offers a serene escape for reflection and peace. This quiet space is designed to support your spiritual needs, providing a calm environment for prayer, meditation, and personal contemplation throughout your workday.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -223,7 +237,7 @@ const HalspaceFigmaSection = () => {
       <section className="stats-split">
         <div className="stats-text">
           <h2>This isn't just a workspace.<br />It's infrastructure for your<br />best work.</h2>
-          <br />
+          <div className="stats-divider" />
           <p>Halspace built its space with one belief: the environment you work in shapes the results you produce. Every corner, corridor, and common area has been intentionally designed to energize focus, spark collaboration, and signal seriousness.</p>
         </div>
         <div className="stats-grid">
